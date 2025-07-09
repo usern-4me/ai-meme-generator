@@ -99,14 +99,7 @@ ai-meme-generator/
     └── (unit and integration tests)
 ```
 
----
 
-## Contributing
-
-Feel free to open issues or submit pull requests!  
-Please keep the project lightweight and easy to run locally.
-
----
 
 ## License
 
@@ -114,4 +107,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-*Built with ❤️ and Rust*

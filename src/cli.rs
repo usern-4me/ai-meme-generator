@@ -1,4 +1,6 @@
 use clap::{Parser, Subcommand};
+use log::{info};
+
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -26,7 +28,28 @@ pub enum Commands {
 
 
 
+pub fn run_cli() {
+    let  cli = Cli::parse();
+    info!("{:?}", cli);
 
+    match cli.command {
+        Commands::Generate { template, use_ai, text } => {
+            info!("Generate command received!");
+            info!("Template: {}", template);
+            info!("Use AI?: {}", use_ai);
+
+            match text {
+                Some(text) => info!("Manual caption: {}", text),
+                None => info!("No manual caption provided."),
+            }
+
+        }
+
+        Commands::ListTemplates => {
+            info!("Listing all available meme templates...");
+        }
+    }
+}
 
 
 

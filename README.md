@@ -82,22 +82,24 @@ cargo run -- --help
 ```
 ai-meme-generator/
 ├── Cargo.toml
+├── .env                  # Stores your OpenAI API key
+├── .gitignore
 ├── README.md
-├── .env.example
 ├── assets/
-│   ├── templates/         # Meme images (PNG/JPEG)
-│   └── fonts/             # Fonts used for rendering text
-├── output/                # Generated meme images saved here
+│   ├── templates/        # Meme template images (e.g., drake.png)
+│   └── fonts/            # Fonts like Impact.ttf
+├── output/               # Final generated memes go here
 ├── src/
-│   ├── main.rs            # CLI entry point
-│   ├── templates.rs       # Template loader and structs
-│   ├── rendering.rs       # Image & text rendering
-│   ├── ai_client.rs       # OpenAI API integration
-│   ├── cli.rs             # CLI commands & argument parsing
-│   └── config.rs          # Config & env loading
-└── tests/
-    └── (unit and integration tests)
-```
+│   ├── main.rs           # CLI entry point
+│   ├── cli.rs            # CLI definitions (clap subcommands)
+│   ├── logging.rs        # Logger setup
+│   ├── templates.rs      # Load & manage template metadata
+│   ├── ai.rs             # Talk to OpenAI (generate caption)
+│   ├── render.rs         # Draw caption onto meme image
+│   └── commands/         # Handlers for each CLI command
+│       ├── generate.rs   # Logic for generating memes
+│       └── list.rs       # Logic for listing templates
+
 
 
 

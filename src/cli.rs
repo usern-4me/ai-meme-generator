@@ -1,29 +1,32 @@
 use clap::{Parser, Subcommand};
 
-#[derive(Parser)]
-#[command(name = "Ai Meme Generator")]
-#[command(about = "generates memes with captions using Ai", long_about = None)]
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+#[command(name= "MemeGenerator")]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands
 }
 
-#[derive(Subcommand)]
+#[derive(Subcommand, Debug)]
 pub enum Commands {
-
     ListTemplates,
 
-
     Generate{
-        #[arg(short, long)]
+        #[arg(short = 't', long, help= "image used as base")]
         template: String,
 
-
-        #[arg(short, help = "Use AI to generate caption")]
+        #[arg(short = 'a', long, help= "text made by ai", default_value_t = false)]
         use_ai: bool,
 
-        #[arg(short, long, help = "Manual Caption for meme")]
+        #[arg(short = 'c',long, help= "manual text")]
         text: Option<String>,
-
     },
 }
+
+
+
+
+
+
+

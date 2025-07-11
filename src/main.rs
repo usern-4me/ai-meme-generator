@@ -18,7 +18,7 @@ fn main() {
     let img_path = "assets/templates/pobrane.jpg";
     let text = "Hello, world!";
     let font_path = "assets/fonts/High Empathy.ttf";
-    let font_size = 32;
+    let font_size: f32 = 32.0;
     let position = Some((100, 100));
 
     match render::render_text_on_image(img_path, text, font_path, font_size, position) {

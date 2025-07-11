@@ -46,7 +46,7 @@ pub fn run_cli() {
         }
 
         Commands::ListTemplates => {
-            info!("Listing all available meme templates...");
+            crate::commands::list::list_templates_fn();
         }
     }
 }

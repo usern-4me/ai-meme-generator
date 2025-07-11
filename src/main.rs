@@ -17,7 +17,7 @@ fn main() {
 
     let img_path = "assets/templates/pobrane.jpg";
     let text = "Hello, world!";
-    let font_path = "assets/fonts/arial.ttf";
+    let font_path = "assets/fonts/High Empathy.ttf";
     let font_size = 32;
     let position = Some((100, 100));
 

@@ -22,11 +22,12 @@ A minimal Rust-based CLI tool for rendering custom text onto image templates —
 ## 🛠️ Usage
 
 ```bash
-cargo run -- "Text here" [font_size] [x] [y] [r] [g] [b] [template_path] [font_path]
+cargo run -- "Text here" [font_size] [align_center] [x] [y] [r] [g] [b] [template_path] [font_path]
 ```
 
 - `x`, `y` – optional text position (default: `50 50`)
 - `r`, `g`, `b` – optional text color (default: white `255 255 255`)
+- `align_center` - text align center (default: false (left))
 - `font_size` - size of font (default: 64)
 - `template_path`, `font_path` - paths to image and font
 
@@ -34,7 +35,7 @@ cargo run -- "Text here" [font_size] [x] [y] [r] [g] [b] [template_path] [font_p
 
 Render centered green text:
 ```bash
-cargo run -- "Vote for me!" 72 100 200 0 255 0
+cargo run -- "Vote for me!" 72 false 100 200 0 255 0
 ```
 
 Use defaults:

@@ -4,7 +4,7 @@ use log::{info};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
-#[command(name= "MemeGenerator")]
+#[command(name= "TextRenderer")]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands
@@ -12,17 +12,14 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    ListTemplates,
+    ListImages,
 
     Generate{
-        #[arg(short = 't', long, help= "image used as base")]
-        template: String,
+        #[arg(short = 'I', long, help= "image used as base")]
+        Image: String,
 
-        #[arg(short = 'a', long, help= "text made by ai", default_value_t = false)]
-        use_ai: bool,
-
-        #[arg(short = 'c',long, help= "manual text")]
-        text: Option<String>,
+        #[arg(short = 't',long, help= "text to render")]
+        text: String,
     },
 }
 
@@ -33,20 +30,14 @@ pub fn run_cli() {
     info!("{:?}", cli);
 
     match cli.command {
-        Commands::Generate { template, use_ai, text } => {
-            info!("Generate command received!");
-            info!("Template: {}", template);
-            info!("Use AI?: {}", use_ai);
-
-            match text {
-                Some(text) => info!("Manual caption: {}", text),
-                None => info!("No manual caption provided."),
-            }
+        Commands::Generate { Image, text } => {
+            info!("Image: {}", Image);
+            info!("text: {}", text);
 
         }
 
-        Commands::ListTemplates => {
-            crate::commands::list::list_templates_fn();
+        Commands::ListImages => {
+            crate::commands::list::list_images_fn();
         }
     }
 }

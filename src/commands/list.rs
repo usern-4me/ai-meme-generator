@@ -1,10 +1,10 @@
-pub fn list_templates_fn(){
+pub fn list_images_fn(){
 
-    let mut templates: Vec<String> = crate::template::list_templates();
+    let mut Images: Vec<String> = crate::image::list_images();
 
-    templates.sort();
+    Images.sort();
 
-    for name in templates {
+    for name in Images {
         println!("{}", name);
     }
 

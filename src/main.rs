@@ -29,10 +29,13 @@ fn main() {
         &font_path,
         font_size,
         Some((x, y)),
+        r,
+        g,
+        b,
         align_center,
     );
 
-
+    
     match result {
         Ok(_) => println!("Saved output/out_name.png with your text!"),
         Err(e) => eprintln!("Error: {}", e),

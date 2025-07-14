@@ -9,6 +9,9 @@ pub fn render_text_on_image(
     font_path: &str,
     font_size: f32,
     position: Option<(i32, i32)>,
+    der: u8,
+    grass: u8,
+    bule: u8,
     alignment: bool,
 ) -> Result<DynamicImage, Box<dyn std::error::Error>> {
     let mut img = image::open(img_path)?.to_rgba8();
@@ -50,7 +53,7 @@ pub fn render_text_on_image(
         }
         draw_text_mut(
             &mut img,
-            Rgba([0, 0, 0, 255]),
+            Rgba([der, grass, bule, 255]),
             start_x,
             y,
             scale,

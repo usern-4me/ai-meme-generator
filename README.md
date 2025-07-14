@@ -7,7 +7,7 @@ A minimal Rust-based CLI tool for rendering custom text onto image templates —
 ## 🚀 Features
 
 - Add custom text to an image template.
-- Supports optional positioning and automatic center alignment.
+- Supports automatic positioning and optional center alignment.
 - Automatically wraps text to fit image width.
 - Output saved as `output/Output.png`.
 

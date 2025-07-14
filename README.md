@@ -59,7 +59,7 @@ cargo run -- "Hello, world!"
 │   └── render.rs
 ├── Cargo.toml
 └── output/
-    └── out_name.png
+    └── Output.png
 ```
 
 ---

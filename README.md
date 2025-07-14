@@ -1,111 +1,68 @@
+# 🖼️ Simple Text Renderer
 
-# AI-Powered Meme Generator in Rust
-
-![Rust](https://img.shields.io/badge/rust-1.70+-orange.svg)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT-blue.svg)
-
-A **local CLI application** to generate memes with AI-powered captions and customizable templates — designed to run on **Windows** (and cross-platform). No server needed; just clone, configure, and run!
+A minimal Rust-based CLI tool for rendering custom text onto image templates — useful for posters, memes, or vote-worthy banners.
 
 ---
 
-## Features
+## 🚀 Features
 
-- Generate meme captions using OpenAI GPT models  
-- Render captions dynamically on meme templates  
-- Support multiple text boxes, font styles, and text wrapping  
-- Easy-to-use CLI with template listing and generation commands  
-- Saves generated memes as PNG images locally  
-- Fully offline except for OpenAI API calls  
+- Add custom text to an image template.
+- Supports optional positioning and automatic center alignment.
+- Automatically wraps text to fit image width.
+- Output saved as `output/Output.png`.
 
 ---
 
-## Getting Started (Windows)
+## 📦 Requirements
 
-### Prerequisites
-
-- [Rust](https://rustup.rs/) (latest stable) installed and on your PATH  
-- OpenAI API Key (sign up [here](https://platform.openai.com/signup))  
-
-### Setup
-
-1. **Clone the repository**  
-   ```powershell
-   git clone https://github.com/yourusername/ai-meme-generator.git
-   cd ai-meme-generator
-   ```
-
-2. **Create `.env` file** in project root:  
-   ```env
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
-
-3. **Build and run the app**  
-   ```powershell
-   cargo run --release -- generate --template "drake" --use-ai
-   ```
-
-4. **Result**  
-   Check the `/output` folder for your generated meme image (`PNG` format).
+- Rust (edition 2021 or newer)
 
 ---
 
-## Usage
+## 🛠️ Usage
 
-### List available meme templates
-
-```powershell
-cargo run -- list-templates
+```bash
+cargo run -- "Text here" [font_size] [x] [y] [r] [g] [b] [template_path] [font_path]
 ```
 
-### Generate meme with AI caption
+- `x`, `y` – optional text position (default: `50 50`)
+- `r`, `g`, `b` – optional text color (default: white `255 255 255`)
+- `font_size` - size of font (default: 64)
+- `template_path`, `font_path` - paths to image and font
 
-```powershell
-cargo run -- generate --template "distracted-boyfriend" --use-ai
+### Examples:
+
+Render centered green text:
+```bash
+cargo run -- "Vote for me!" 72 100 200 0 255 0
 ```
 
-### Generate meme with your own caption text
-
-```powershell
-cargo run -- generate --template "drake" --text "Coding all night like a pro"
-```
-
-### Help
-
-```powershell
-cargo run -- --help
+Use defaults:
+```bash
+cargo run -- "Hello, world!"
 ```
 
 ---
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```
-ai-meme-generator/
-├── Cargo.toml
-├── .env                  # Stores your OpenAI API key
-├── .gitignore
-├── README.md
+.
 ├── assets/
-│   ├── templates/        # Meme template images (e.g., drake.png)
-│   └── fonts/            # Fonts like Impact.ttf
-├── output/               # Final generated memes go here
+│   ├── fonts/
+│   │   └── High Empathy.ttf
+│   └── templates/
+│       └── default.jpg
 ├── src/
-│   ├── main.rs           # CLI entry point
-│   ├── cli.rs            # CLI definitions (clap subcommands)
-│   ├── logging.rs        # Logger setup
-│   ├── templates.rs      # Load & manage template metadata
-│   ├── ai.rs             # Talk to OpenAI (generate caption)
-│   ├── render.rs         # Draw caption onto meme image
-│   └── commands/         # Handlers for each CLI command
-│       ├── generate.rs   # Logic for generating memes
-│       └── list.rs       # Logic for listing templates
-
-
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+│   ├── main.rs
+│   └── render.rs
+├── Cargo.toml
+└── output/
+    └── out_name.png
+```
 
 ---
 
+## 📄 License
+
+MIT or similar — feel free to reuse, fork, or adapt.

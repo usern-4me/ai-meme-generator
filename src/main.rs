@@ -1,34 +1,40 @@
-mod cli;
-mod logger;
-mod commands;
-mod image;
+use std::env;
+use image::Rgba;
 mod render;
 
-
-
-
-
-fn main() {
-    logger::init_logger();
-    cli::run_cli();
-
-
-
-
-    let img_path = "assets/templates/pobrane.jpg";
-    let text = "Text text text text text text text text text text text text text";
-    let font_path = "assets/fonts/High Empathy.ttf";
-    let font_size: f32 = 64.0;
-    let position = Some((400, 100));
-    let center_alignment = true;
-
-    match render::render_text_on_image(img_path, text, font_path, font_size, position, center_alignment) {
-        Ok(img) => println!("Image rendered successfully!"),
-        Err(e) => eprintln!("Error rendering image: {}", e),
-    }
-    
-        
+fn parse_arg<T: std::str::FromStr>(args: &[String], index: usize, default: T) -> T {
+    args.get(index)
+        .and_then(|val| val.parse::<T>().ok())
+        .unwrap_or(default)
 }
 
+fn main() {
+    let args: Vec<String> = env::args().collect();
 
+    let text = args.get(1).cloned().unwrap_or_else(|| "Hello, world!".to_string());
+    let font_size: f32 = parse_arg(&args, 2, 64.0);
+    let x = parse_arg(&args, 3, 50);
+    let y = parse_arg(&args, 4, 50);
+    let r = parse_arg(&args, 5, 255);
+    let g = parse_arg(&args, 6, 255);
+    let b = parse_arg(&args, 7, 255);
+    let template_path = args.get(8).unwrap_or(&"assets/templates/default.jpg".to_string()).clone();
+    let font_path = args.get(9).unwrap_or(&"assets/fonts/High Empathy.ttf".to_string()).clone();
+
+
+    let result = render::render_text_on_image(
+        &template_path,
+        &text,
+        &font_path,
+        font_size,
+        Some((x, y)),
+        true,
+    );
+
+
+    match result {
+        Ok(_) => println!("Saved output/out_name.png with your text!"),
+        Err(e) => eprintln!("Error: {}", e),
+    }
+}
 

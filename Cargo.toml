@@ -1,17 +1,10 @@
 [package]
 name = "ai-meme-generator"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
+description = "Simple text renderer using image templates."
 
 [dependencies]
-clap = { version = "4.5.41", features = ["derive"] }
-serde = {version = "1.0.219", features = ["derive"]}
 image = "0.25.6"
 imageproc = "0.25.0"
-ab_glyph = "0.2.30"
-ab_glyph_rasterizer = "0.1.9"
-log = "0.4.27"
-env_logger = "0.11.8"
-
-
-
+ab_glyph = "0.2"

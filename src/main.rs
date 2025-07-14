@@ -1,5 +1,4 @@
 use std::env;
-use image::Rgba;
 mod render;
 
 fn parse_arg<T: std::str::FromStr>(args: &[String], index: usize, default: T) -> T {
@@ -35,7 +34,7 @@ fn main() {
         align_center,
     );
 
-    
+
     match result {
         Ok(_) => println!("Saved output/out_name.png with your text!"),
         Err(e) => eprintln!("Error: {}", e),

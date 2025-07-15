@@ -36,8 +36,7 @@ fn main() {
 
 
     match result {
-        Ok(_) => println!("Saved output/out_name.png with your text!"),
+        Ok(_) => println!("Saved output/out_name.png with your text!"), 
         Err(e) => eprintln!("Error: {}", e),
     }
 }
-
